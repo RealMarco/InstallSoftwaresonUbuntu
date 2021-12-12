@@ -1,0 +1,189 @@
+# when compiling
+marco@marco-ubuntu:~/catkin_workspace$ catkin_make
+Base path: /home/marco/catkin_workspace
+Source space: /home/marco/catkin_workspace/src
+Build space: /home/marco/catkin_workspace/build
+Devel space: /home/marco/catkin_workspace/devel
+Install space: /home/marco/catkin_workspace/install
+####
+#### Running command: "make cmake_check_build_system" in "/home/marco/catkin_workspace/build"
+####
+####
+#### Running command: "make -j4 -l4" in "/home/marco/catkin_workspace/build"
+####
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionFeedback
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsFeedback
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsGoal
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionGoal
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_BoundingBoxes
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsResult
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_BoundingBox
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsAction
+[  0%] Built target _darknet_ros_msgs_generate_messages_check_deps_ObjectCount
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_py
+[  8%] Built target darknet_ros_msgs_generate_messages_eus
+[ 25%] Built target darknet_ros_msgs_generate_messages_nodejs
+[ 25%] Built target darknet_ros_msgs_generate_messages_lisp
+[ 32%] Built target darknet_ros_msgs_generate_messages_cpp
+[ 42%] Built target darknet_ros_msgs_generate_messages_py
+[ 42%] Built target darknet_ros_msgs_generate_messages
+[ 97%] Built target darknet_ros_lib
+[100%] Built target darknet_ros
+[100%] Built target darknet_ros_nodelet
+marco@marco-ubuntu:~/catkin_workspace$ catkin_make run_tests
+Base path: /home/marco/catkin_workspace
+Source space: /home/marco/catkin_workspace/src
+Build space: /home/marco/catkin_workspace/build
+Devel space: /home/marco/catkin_workspace/devel
+Install space: /home/marco/catkin_workspace/install
+####
+#### Running command: "make cmake_check_build_system" in "/home/marco/catkin_workspace/build"
+####
+####
+#### Running command: "make run_tests -j4 -l4" in "/home/marco/catkin_workspace/build"
+####
+[ 50%] Built target gtest
+Removing test result files from '/home/marco/catkin_workspace/build/test_results/darknet_ros'
+- removing '/home/marco/catkin_workspace/build/test_results/darknet_ros/rostest-test_object_detection.xml'
+- removing '/home/marco/catkin_workspace/build/test_results/darknet_ros/MISSING-rostest-test_object_detection.xml'
+[ 50%] Built target clean_test_results_darknet_ros
+[100%] Built target darknet_ros_object_detection-test
+[100%] Built target tests
+-- run_tests.py: execute commands
+  /home/marco/anaconda3/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/marco/catkin_workspace/src/darknet_ros/darknet_ros --package=darknet_ros --results-filename test_object_detection.xml --results-base-dir "/home/marco/catkin_workspace/build/test_results" /home/marco/catkin_workspace/src/darknet_ros/darknet_ros/test/object_detection.test 
+Traceback (most recent call last):
+  File "/opt/ros/noetic/share/rostest/cmake/../../../bin/rostest", line 71, in <module>
+    rostestmain()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/__init__.py", line 278, in rostestmain
+    from rostest.rostest_main import rostestmain as _main
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_main.py", line 53, in <module>
+    from rostest.rostest_parent import ROSTestLaunchParent
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_parent.py", line 49, in <module>
+    from rospy import logwarn
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/__init__.py", line 49, in <module>
+    from .client import spin, myargv, init_node, \
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/client.py", line 60, in <module>
+    import rospy.impl.init
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/init.py", line 58, in <module>
+    from rosgraph.rosenv import DEFAULT_MASTER_PORT  # default port for master's to bind to
+ImportError: cannot import name 'DEFAULT_MASTER_PORT' from 'rosgraph.rosenv' (/usr/lib/python3/dist-packages/rosgraph/rosenv.py)
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 118, in apport_excepthook
+    pr.add_proc_info(extraenv=['PYTHONPATH', 'PYTHONHOME'])
+  File "/usr/lib/python3/dist-packages/apport/report.py", line 595, in add_proc_info
+    proc_pid_fd = os.open('/proc/%s' % pid, os.O_RDONLY | os.O_PATH | os.O_DIRECTORY)
+AttributeError: module 'os' has no attribute 'O_PATH'
+
+Original exception was:
+Traceback (most recent call last):
+  File "/opt/ros/noetic/share/rostest/cmake/../../../bin/rostest", line 71, in <module>
+    rostestmain()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/__init__.py", line 278, in rostestmain
+    from rostest.rostest_main import rostestmain as _main
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_main.py", line 53, in <module>
+    from rostest.rostest_parent import ROSTestLaunchParent
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_parent.py", line 49, in <module>
+    from rospy import logwarn
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/__init__.py", line 49, in <module>
+    from .client import spin, myargv, init_node, \
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/client.py", line 60, in <module>
+    import rospy.impl.init
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/init.py", line 58, in <module>
+    from rosgraph.rosenv import DEFAULT_MASTER_PORT  # default port for master's to bind to
+ImportError: cannot import name 'DEFAULT_MASTER_PORT' from 'rosgraph.rosenv' (/usr/lib/python3/dist-packages/rosgraph/rosenv.py)
+-- run_tests.py: verify result "/home/marco/catkin_workspace/build/test_results/darknet_ros/rostest-test_object_detection.xml"
+Cannot find results, writing failure results to '/home/marco/catkin_workspace/build/test_results/darknet_ros/MISSING-rostest-test_object_detection.xml'
+[100%] Built target _run_tests_darknet_ros_rostest_test_object_detection.test
+[100%] Built target _run_tests_darknet_ros_rostest
+[100%] Built target _run_tests_darknet_ros
+[100%] Built target run_tests
+marco@marco-ubuntu:~/catkin_workspace$ catkin_make run_tests
+Base path: /home/marco/catkin_workspace
+Source space: /home/marco/catkin_workspace/src
+Build space: /home/marco/catkin_workspace/build
+Devel space: /home/marco/catkin_workspace/devel
+Install space: /home/marco/catkin_workspace/install
+####
+#### Running command: "make cmake_check_build_system" in "/home/marco/catkin_workspace/build"
+####
+####
+#### Running command: "make run_tests -j4 -l4" in "/home/marco/catkin_workspace/build"
+####
+[ 50%] Built target gtest
+Removing test result files from '/home/marco/catkin_workspace/build/test_results/darknet_ros'
+- removing '/home/marco/catkin_workspace/build/test_results/darknet_ros/rostest-test_object_detection.xml'
+- removing '/home/marco/catkin_workspace/build/test_results/darknet_ros/MISSING-rostest-test_object_detection.xml'
+[ 50%] Built target clean_test_results_darknet_ros
+[100%] Built target darknet_ros_object_detection-test
+[100%] Built target tests
+-- run_tests.py: execute commands
+  /home/marco/anaconda3/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/marco/catkin_workspace/src/darknet_ros/darknet_ros --package=darknet_ros --results-filename test_object_detection.xml --results-base-dir "/home/marco/catkin_workspace/build/test_results" /home/marco/catkin_workspace/src/darknet_ros/darknet_ros/test/object_detection.test 
+Traceback (most recent call last):
+  File "/opt/ros/noetic/share/rostest/cmake/../../../bin/rostest", line 71, in <module>
+    rostestmain()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/__init__.py", line 278, in rostestmain
+    from rostest.rostest_main import rostestmain as _main
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_main.py", line 53, in <module>
+    from rostest.rostest_parent import ROSTestLaunchParent
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_parent.py", line 49, in <module>
+    from rospy import logwarn
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/__init__.py", line 49, in <module>
+    from .client import spin, myargv, init_node, \
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/client.py", line 60, in <module>
+    import rospy.impl.init
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/init.py", line 58, in <module>
+    from rosgraph.rosenv import DEFAULT_MASTER_PORT  # default port for master's to bind to
+ImportError: cannot import name 'DEFAULT_MASTER_PORT' from 'rosgraph.rosenv' (/usr/lib/python3/dist-packages/rosgraph/rosenv.py)
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/apport_python_hook.py", line 118, in apport_excepthook
+    pr.add_proc_info(extraenv=['PYTHONPATH', 'PYTHONHOME'])
+  File "/usr/lib/python3/dist-packages/apport/report.py", line 595, in add_proc_info
+    proc_pid_fd = os.open('/proc/%s' % pid, os.O_RDONLY | os.O_PATH | os.O_DIRECTORY)
+AttributeError: module 'os' has no attribute 'O_PATH'
+
+Original exception was:
+Traceback (most recent call last):
+  File "/opt/ros/noetic/share/rostest/cmake/../../../bin/rostest", line 71, in <module>
+    rostestmain()
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/__init__.py", line 278, in rostestmain
+    from rostest.rostest_main import rostestmain as _main
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_main.py", line 53, in <module>
+    from rostest.rostest_parent import ROSTestLaunchParent
+  File "/opt/ros/noetic/lib/python3/dist-packages/rostest/rostest_parent.py", line 49, in <module>
+    from rospy import logwarn
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/__init__.py", line 49, in <module>
+    from .client import spin, myargv, init_node, \
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/client.py", line 60, in <module>
+    import rospy.impl.init
+  File "/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/init.py", line 58, in <module>
+    from rosgraph.rosenv import DEFAULT_MASTER_PORT  # default port for master's to bind to
+ImportError: cannot import name 'DEFAULT_MASTER_PORT' from 'rosgraph.rosenv' (/usr/lib/python3/dist-packages/rosgraph/rosenv.py)
+-- run_tests.py: verify result "/home/marco/catkin_workspace/build/test_results/darknet_ros/rostest-test_object_detection.xml"
+Cannot find results, writing failure results to '/home/marco/catkin_workspace/build/test_results/darknet_ros/MISSING-rostest-test_object_detection.xml'
+[100%] Built target _run_tests_darknet_ros_rostest_test_object_detection.test
+[100%] Built target _run_tests_darknet_ros_rostest
+[100%] Built target _run_tests_darknet_ros
+[100%] Built target run_tests
+

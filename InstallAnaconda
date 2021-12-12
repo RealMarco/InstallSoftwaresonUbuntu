@@ -1,0 +1,53 @@
+1. annotate the conda-connected lines in ~/.bashrc
+2. $ bash Anaconda3-2020.11-Linux-x86_64.sh -u
+or $ bash Anaconda3-2020.11-Linux-x86_64.sh
+
+WARNING:
+    You currently have a PYTHONPATH environment variable set. This may cause
+    unexpected behavior when running the Python interpreter in Anaconda3.
+    For best results, please verify that your PYTHONPATH only points to
+    directories of packages that are compatible with the Python interpreter
+    in Anaconda3: /home/marco/anaconda3
+Do you wish the installer to initialize Anaconda3
+by running conda init? [yes|no]
+[no] >>> yes
+Traceback (most recent call last):
+  File "/home/marco/anaconda3/bin/conda", line 12, in <module>
+    from conda.cli import main
+ModuleNotFoundError: No module named 'conda'
+If you'd prefer that conda's base environment not be activated on startup, 
+   set the auto_activate_base parameter to false: 
+
+conda config --set auto_activate_base false
+
+Thank you for installing Anaconda3!
+
+3. add these in your ~/.bashrc
+export PATH=/home/marco/anaconda3/bin:/home/marco/anaconda3/lib/:$PATH
+export PYTHONPATH=/home/marco/anaconda3/lib/python3.8:/home/marco/anaconda3/lib/python3.8/site-packages:$PYTHONPATH
+
+3. $ spyder
+   $ anaconda-navigator
+Traceback (most recent call last):
+  File "/home/marco/anaconda3/lib/python3.8/site-packages/qtpy/__init__.py", line 204, in <module>
+    from PySide import __version__ as PYSIDE_VERSION  # analysis:ignore
+ModuleNotFoundError: No module named 'PySide'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/marco/anaconda3/bin/spyder", line 11, in <module>
+    sys.exit(main())
+  File "/home/marco/anaconda3/lib/python3.8/site-packages/spyder/app/start.py", line 201, in main
+    from spyder.app import mainwindow
+  File "/home/marco/anaconda3/lib/python3.8/site-packages/spyder/app/mainwindow.py", line 53, in <module>
+    requirements.check_qt()
+  File "/home/marco/anaconda3/lib/python3.8/site-packages/spyder/requirements.py", line 41, in check_qt
+    import qtpy
+  File "/home/marco/anaconda3/lib/python3.8/site-packages/qtpy/__init__.py", line 210, in <module>
+    raise PythonQtError('No Qt bindings could be found')
+qtpy.PythonQtError: No Qt bindings could be found
+
+4.$ conda uninstall pyqt
+5.$ conda update conda
+6.$ conda update anaconda-navigator or $ conda install anaconda-navigator

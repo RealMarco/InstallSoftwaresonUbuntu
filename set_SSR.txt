@@ -1,0 +1,82 @@
+#Surfing the Internet scientifically by shadowsocks-libev
+#SS and SSR
+#refer to https://ochicken.top/2019/10/11/20191011-Shadowsocks-libev/
+#         https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7
+#         https://doubibackup.com/
+#V2Ray
+#         https://www.v2ray.com/
+#         https://toutyrater.github.io/
+#         https://github.com/v2fly/fhs-install-v2ray
+
+$ sudo vim /etc/shadowsocks-libev/config.json
+
+{
+    "server":"89.163.224.142",
+    "server_port":40121,
+    "password":"dongtaiwang.com 123abc",
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "timeout":60,
+    "method":"rc4",
+    "protocol":"origin",
+    "obfs":"plain"
+}
+
+{
+    "server":"173.0.55.67",
+    "server_port":13011,
+    "password":"dongtaiwang.com 123abc",
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "timeout":60,
+    "method":"rc4",
+    "protocol":"origin",
+    "obfs":"plain"
+}
+
+{
+    "server":"lg1.free4444.xyz",
+    "server_port": 443,
+    "password":"dongtaiwang.com",
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "timeout":60,
+    "method":"none",
+    "protocol":"auth_chain_a",
+    "obfs":"tls1.2_ticket_auth"
+
+}
+sudo systemctl restart shadowsocks-libev-local@config  #本地启动Shadowsocks
+sudo service shadowsocks-libev-local@config restart    #功能同上
+sudo systemctl enable shadowsocks-libev-local@config   #配置开机自启
+sudo systemctl status shadowsocks-libev-local@config   #查看状态
+
+sudo netstat -anptuo | grep 8388                       #p: 显示PID进程号; tu: 指明显示TCP端口和UDP端口. anp参数必须有
+lsof -i:8388                                           #功能同上
+sudo netstat -anp | grep ss-local
+sudo ps -ef | grep ss-server                                                                             
+
+    $ export ALL_PROXY="socks5://127.0.0.1:1080"
+#or $ export https_proxy="http://127.0.0.1:1080/"
+#&  $ export http_proxy="http://127.0.0.1:1080/" 
+
+$ unset all_proxy && unset ALL_PROXY
+
+# Now your terminal can connect to the SSR
+
+#After installing and starting the ss, set Network -> Network Proxy -> Manual -> socks 127.0.0.1 : 1080, and Preferences of Browser ->  network -> click "Manual proxy settings -> fill in 127.0.0.1 : 1080, then u can surf the Internet scientifically by the browser  
+
+#Or set Network -> Network Proxy -> Automatic, and Preferences of Browser ->  network -> click "use system proxy settings", then u can surf the Internet #scientifically by the browser  
+
+
+#Use the command to speed up git cloning 
+#refer to https://zhuanlan.zhihu.com/p/46973701
+$ git config --global http.proxy 'socks5://127.0.0.1:1080' 
+$ git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+# Stop using proxy
+sudo systemctl stop shadowsocks-libev-local@config   # Stop it 
+# unset git proxy
+$ git config --global --unset http.proxy
+$ git config --global --unset https.proxy
+

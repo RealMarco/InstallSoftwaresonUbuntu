@@ -1,0 +1,12 @@
+0. Install ROS, OpenCV, and boost
+1. scientifically surfing the Internet 
+
+2. git clone recursively without SSH key
+$ cd catkin_workspace/src
+$ git clone --recursive https://github.com/leggedrobotics/darknet_ros.git  
+$ cd ../
+
+3. $ catkin_make -DCMAKE_BUILD_TYPE=Release
+
+4. test 
+$ catkin build darknet_ros --no-deps --verbose --catkin-make-args run_tests

@@ -1,0 +1,24 @@
+Refer to https://blog.csdn.net/Tang_Zhe/article/details/121745352
+1. download too slowly
+orginal download link:
+https://az764295.vo.msecnd.net/stable/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e/code-stable-x64-1638855856.tar.gz
+change into 
+https://vscode.cdn.azure.cn/stable/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e/code-stable-x64-1638855856.tar.gz
+2. $ wget https://vscode.cdn.azure.cn/stable/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e/code-stable-x64-1638855856.tar.gz
+3. $ tar vxf code-stable-x64-1638855856.tar.gz 
+4. $ sudo mv VSCode-linux-x64  /usr/local/
+5. $ sudo cp /usr/local/VSCode-linux-x64/resources/app/resources/linux/code.png /usr/share/icons/
+6. $ sudo vim /usr/share/applications/VSCode.desktop
+# add below info into this .desktop file
+[Desktop Entry]
+Name = Visual Studio Code
+Comment = Multi-platform code editor for Linux 
+Exec = /usr/local/VSCode-linux-x64/code
+Icon = /usr/share/icons/code.png
+Type = Application
+StartupNotify =true
+Categories = TextEditor;Development;Utility;
+MimeType = text/plain;
+7. save and set "Opening Method" as "Run/Operate Software"
+8. add "export PATH=/usr/local/VSCode-linux-x64:$PATH" in ~/.bashrc
+9. now you can enter code in the shell or  search it in the navigator to start your coding journey
