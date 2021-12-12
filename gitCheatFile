@@ -1,5 +1,5 @@
 Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
-
+0. scientifically surfing the Internet
 1. create a Repositories on github.com
 2. mkdir a new folder, such as $ mkdir InstallSoftwaresonUbuntu
 3. $ cd InstallSoftwaresonUbuntu
@@ -14,5 +14,38 @@ Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
        Enter same passphrase again: 
 
 7. $ git pull git@github.com:RealMarco/InstallSoftwaresonUbuntu.git
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+展开对象中: 100% (4/4), 1.48 KiB | 138.00 KiB/s, 完成.
+来自 github.com:RealMarco/InstallSoftwaresonUbuntu
+ * branch            HEAD       -> FETCH_HEAD
 
+8. $ git add DownloadInstallVSCode
+   $ git add ...
+9. git commit -m '1st'
+[master 8efbef0] 1st
+ 7 files changed, 379 insertions(+)
+ create mode 100644 DownloadInstallVSCode
+ create mode 100644 ErrorsinInstallingDarknetROS
+ create mode 100644 InstallAnaconda
+ create mode 100644 InstallDarknetROS
+ create mode 100644 InstallSpyder
+ create mode 100644 gitCheatFile
+ create mode 100644 set_SSR.txt
+
+10. git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git
+枚举对象中: 10, 完成.
+对象计数中: 100% (10/10), 完成.
+使用 4 个线程进行压缩
+压缩对象中: 100% (8/8), 完成.
+写入对象中: 100% (9/9), 5.22 KiB | 2.61 MiB/s, 完成.
+总共 9 （差异 0），复用 0 （差异 0）
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/RealMarco/InstallSoftwaresonUbuntu/pull/new/master
+remote: 
+To github.com:RealMarco/InstallSoftwaresonUbuntu.git
+ * [new branch]      master -> master
 
