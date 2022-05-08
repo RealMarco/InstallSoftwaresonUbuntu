@@ -4,6 +4,11 @@ Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
 1. create a Repositories on github.com
 2. mkdir a new folder, such as $ mkdir InstallSoftwaresonUbuntu
 3. $ cd InstallSoftwaresonUbuntu
+   $ git init
+3.1 Check current local branch's name. Then modify it as the remote defult branch's name ('main' in github.com)
+   $ git branch 
+   $ git branch -m master main
+
 4. $ git remote add origin https://github.com/RealMarco/InstallSoftwaresonUbuntu.git
 5. $ git remote -v
    origin	https://github.com/RealMarco/InstallSoftwaresonUbuntu.git (fetch)
@@ -13,6 +18,7 @@ Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
 	2) Enter file in which to save the key (/home/marco/.ssh/id_ed25519): 
        Enter passphrase (empty for no passphrase): 
        Enter same passphrase again: 
+6.1Check if ssh key has been successfully authenticated by $ ssh -T git@github.com
 
 7. $ git pull git@github.com:RealMarco/InstallSoftwaresonUbuntu.git
 remote: Enumerating objects: 4, done.
@@ -29,7 +35,7 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
    $ cd InstallSoftwaresonUbuntu
 8. $ git add DownloadInstallVSCode
    $ git add ...
-   $ git add -A
+   $ git add -A  # all files
 9. git commit -m '1st'
 [master 8efbef0] 1st
  7 files changed, 379 insertions(+)
@@ -43,6 +49,7 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
 
 10.$ git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git 
    $ git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git --repo = master
+   $ git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git --repo 
 枚举对象中: 10, 完成.
 对象计数中: 100% (10/10), 完成.
 使用 4 个线程进行压缩
