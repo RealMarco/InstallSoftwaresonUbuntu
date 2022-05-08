@@ -1,0 +1,185 @@
+#Refer to
+#https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Install-Debians/
+#http://wiki.ros.org/noetic/Installation/Ubuntu
+#https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+#https://sourceforge.net/projects/vcxsrv/
+#https://blog.csdn.net/weixin_36628778/article/details/104738369
+#https://blog.csdn.net/feimeng116/article/details/106602562
+#https://zhuanlan.zhihu.com/p/149187701
+#https://github.com/skumra/baxter-pnp  
+#Tips: consult both blogs and official documents, consult more and consult the latest ones 
+
+
+# set locale
+locale  # check for UTF-8
+
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+
+#Change and setup sources
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  #Backup
+sudo vim /etc/apt/sources.list
+
+注释掉源代码，并在文件最前面添加对应Ubuntu版本的镜像地址
+refer to https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+换源前速度几十k/s，换源后可达数M/s
+键盘点击 i 即可进行编辑，修改完成后，点击esc然后退出保存输入【：wq】，强制保存退出，或输入【：wq！】保存退出即可。
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+sudo apt-get update
+sudo apt-get upgrade #optional, and it might take u a period
+
+sudo apt update && sudo apt install curl gnupg2 lsb-release
+curl http://repo.ros2.org/repos.key | sudo apt-key add - 
+#curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+cat /etc/apt/sources.list.d/ros2-latest.list #检查ros2镜像网址是否与Ubuntu版本号对应
+#若不是，则
+sudo sh -c 'echo "deb http://mirror.tuna.tsinghua.edu.cn/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
+
+# install ros2 packages
+# Desktop version consists of ROS, RViz, demos, tutorials, while ROS-Base (Bare Bones) include Communication libraries, message packages, command line tools. No GUI tools.
+sudo apt-get update && sudo apt-get install ros-foxy-desktop 
+#sudo apt install ros-foxy-ros-base
+
+# Environment setup
+source /opt/ros/foxy/setup.bash
+#以后每次打开终端都需要输入一次上面的语句，比较麻烦，用下面的方式自动加载
+echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+# Install argcomplete to achieve autocompletion
+sudo apt install -y python3-pip
+sudo pip3 install -U argcomplete
+
+#Try some examples
+ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_py listener
+
+
+#Install Desktop Environment for windows subsystem
+sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager
+
+export  DISPLAY=localhost:0
+#执行下面这条命令之前，确保你上一步的XLaunch是开着的并且配置好了
+ccsm  #settings
+#两种配置方式https://zhuanlan.zhihu.com/p/34884285； https://zhuanlan.zhihu.com/p/76032647
+
+#export  DISPLAY=localhost:0
+compiz 
+sudo compiz
+无桌面
+# End up installing desktop environment
+
+删除win ros2的软件/配置
+按官网检测ros问题
+
+#Configuring the environment and try turtlesim 
+ros2 run turtlesim turtlesim_node
+##ERROR: /opt/ros/foxy/lib/turtlesim/turtlesim_node: error while loading shared libraries: libQt5Core.so.5: cannot open shared object file: No such file or directory. This issue will be solved by the command below refer to https://askubuntu.com/questions/1245160/cdo-error-while-loading-shared-libraries-libqt5core-so-5-cannot-open-shared-o
+
+#sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+
+ros2 run turtlesim turtle_teleop_key
+#ERROR, no interaction while pressing the arrow keys
+
+
+
+#Installing ros neotic 
+#refer to and see details in http://wiki.ros.org/noetic/Installation/Ubuntu
+#                            
+#P.S.use mirror:
+#$ sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
+
+# $ sudo rosdep init
+# ERROR: cannot download default sources list from:【closed】
+# refer to https://blog.csdn.net/u013468614/article/details/102917569
+1.$ sudo gedit /etc/hosts 
+2.add 151.101.84.133  raw.githubusercontent.com
+
+
+# Errors occurred when run $rosdep update          
+# Solution:1.surf the Internet scientifically 
+	  1.5 reset the DOWNLOAD_TIMEOUT value  # https://blog.csdn.net/qq_38649880/article/details/87903654
+           2. $ sudo gedit /etc/resolv.conf 
+            Add nameserver 8.8.8.8              #refer to https://www.codenong.com/cs106360595/
+                nameserver 8.8.4.4 
+           3.sudo  apt-get update
+           4.rosdep update
+           P.S. no need to $ sudo gedit /etc/hosts and add 151.101.84.133  raw.githubusercontent.com
+
+#Finish installing ros neotic
+
+# Then install baxter robotic grasping workplace by follow the instructions here: https://github.com/skumra/baxter-pnp  
+# But there are some updates. I'll mark them by "Failed" and "Modified". Refer to 
+# https://blog.csdn.net/m0_50117360/article/details/109017264
+# https://blog.csdn.net/Stack_OVER_flow/article/details/104706004
+
+#Failed:   $ sudo apt-get install python-wstool python-rosdep
+#Modified: $ sudo apt-get install python3-wstool python3-rosdep
+#Notes: python-wstool is used for python2 while python3-wstool is for pythons
+
+#Failed:   $ wstool merge https://raw.github.com/RethinkRobotics/baxter/master/baxter_sdk.rosinstall
+#Modified: $ wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter/master/baxter_sdk.rosinstall
+
+$ rosinstall
+$ roscore
+$ rosrun turtlesim turtlesim_node
+$ rosrun turtlesim turtle_teleop_key
+
+#Go on the steps in https://github.com/skumra/baxter-pnp 
+$ catkin_make  
+$ catkin_make install
+#Errors and solutions
+#error except OSError, e #python2: except OSError as e #python3; https://stackoverflow.com/questions/49053865/python-except-oserror-e
+#error CMake requires Qt 4.x:     https://blog.csdn.net/qq_36829834/article/details/109033823
+#	                          https://my.oschina.net/u/916174/blog/4769061
+#error lack of effort-controllers:https://blog.csdn.net/jianghao_ava/article/details/81082514
+#error no match for ‘operator=’ : https://github.com/RethinkRobotics/baxter_simulator/issues/128
+#error no match for ‘operator=’ : https://github.com/RethinkRobotics/baxter_simulator/pull/130
+#error CV_LOAD_IMAGE_UNCHANGED:   https://blog.csdn.net/dxc7216783/article/details/103411140
+
+#error catkin_package() DEPENDS on 'gazebo' but neither 'gazebo_INCLUDE_DIRS' nor
+#'gazebo_LIBRARIES' is defined:   https://blog.csdn.net/qq_39531155/article/details/114899694
+
+#error catkin_package() DEPENDS on 'yaml-cpp' but neither 'yaml-cpp_INCLUDE_DIRS' nor
+#'yaml-cpp_LIBRARIES' is defined. https://blog.csdn.net/qq_39531155/article/details/114899694
+
+#error FindEigen.cmake:62 (message):The FindEigen.cmake Module in the cmake_modules package is deprecated.                       http://wiki.ros.org/jade/Migration
+
+#install setup.py - https://blog.csdn.net/sowhatgavin/article/details/81912541
+
+$ roslaunch baxter_gazebo baxter_world.launch #error
+#Refer to https://blog.csdn.net/weixin_45135154/article/details/113273385
+# Error
+RLException: Invalid <param> tag: Cannot load command parameter [robot_description]: no such command [['/opt/ros/noetic/share/xacro/xacro.py', '--inorder', '/home/marco/ros_ws/src/baxter_common/baxter_description/urdf/baxter.urdf.xacro', 'gazebo:=true']]. 
+Param xml is <param if="$(arg load_robot_description)" name="robot_description" command="$(find xacro)/xacro.py --inorder $(find baxter_description)/urdf/baxter.urdf.xacro gazebo:=true"/>
+The traceback for the exception was written to the log file
+# Solution 
+$ cd /home/marco/ros_ws/src/baxter_simulator/baxter_gazebo/launch
+$ cp baxter_world.launch baxter_world.launch.bak
+#将baxter_world.launch里的xacro.py的.py去掉，保存
+$ roslaunch baxter_gazebo baxter_world.launch
+
+#Install Ros1-ros bridge
+
+#useful commands
+curl cip.cc
+sudo gedit /etc/hosts
+sudo vim /etc/shadowsocks-libev/config.json
+sudo gedit /etc/resolv.conf
+
+
+

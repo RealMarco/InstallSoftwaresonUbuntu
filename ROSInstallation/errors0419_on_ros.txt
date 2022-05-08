@@ -1,0 +1,56 @@
+
+
+
+
+
+5. $ sudo mount /dev/sda6 /home/marco/workplace
+The disk contains an unclean file system (0, 0).
+Metadata kept in Windows cache, refused to mount.
+Falling back to read-only mount because the NTFS partition is in an
+unsafe state. Please resume and shutdown Windows fully (no hibernation
+or fast restarting.)
+Could not mount read-write, trying read-only
+ntfs-3g-mount: failed to access mountpoint /home/marco/workplace: 没有那个文件或目录
+
+
+6. xacro: in-order processing became default in ROS Melodic. You can drop the option.
+Child elements of a <xacro:include> tag are ignored
+when processing file: /home/marco/ros_ws/src/baxter_common/baxter_description/urdf/baxter.urdf.xacro
+Child elements of a <xacro:include> tag are ignored
+when processing file: /home/marco/ros_ws/src/baxter_common/baxter_description/urdf/baxter.urdf.xacro
+
+7.
+[WARN] [1619171694.933370, 0.000000]: DEPRECATION warning: --shutdown-timeout has no effect.
+[INFO] [1619171694.935053, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller
+[WARN] [1619171694.949863, 0.000000]: DEPRECATION warning: --shutdown-timeout has no effect.
+[WARN] [1619171694.950951, 0.000000]: DEPRECATION warning: --shutdown-timeout has no effect.
+[INFO] [1619171694.952787, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller
+[INFO] [1619171694.953295, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller
+[WARN] [1619171694.956842, 0.000000]: DEPRECATION warning: --shutdown-timeout has no effect.
+
+8.
+Error Gtk-Message: 17:54:58.751: Failed to load module "canberra-gtk-module"
+# refer to https://blog.csdn.net/yitengtongweishi/article/details/86309382
+#Solution
+$sudo apt-get install libcanberra-gtk-module
+
+9.
+Error [ WARN] [1619171712.719295321, 0.230000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'right_s0'.
+
+#refer to  https://www.cnblogs.com/wangkongming/p/4476933.html
+#https://zhuanlan.zhihu.com/p/60411382
+#https://blog.csdn.net/xue_hit/article/details/106942663
+#Solution
+$ cd ~/ros_ws
+$ grep -rn "EffortJointInterface" *
+open the corresponding files and replace EffortJointInterface by hardware_interface/EffortJointInterface
+
+
+ERROR] nvoking "make cmake_check_build_system". failed returned error code No such file or directory
+$ catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+$ python -m site
+$ cd /opt/ros/noetic/lib/python3/dist-packages/yaml
+$ sudo gedit __init__.py
+$ rosrun baxter_tools enable_robot.py -e
+$ ./baxter.sh sim
+
