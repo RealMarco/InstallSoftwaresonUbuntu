@@ -1,4 +1,5 @@
 Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
+# Update your romote respiratory to local path.
 0. scientifically surfing the Internet
 1. create a Repositories on github.com
 2. mkdir a new folder, such as $ mkdir InstallSoftwaresonUbuntu
@@ -22,8 +23,13 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
 来自 github.com:RealMarco/InstallSoftwaresonUbuntu
  * branch            HEAD       -> FETCH_HEAD
 
+
+# Update local modified files to remote respiratory.
+
+   $ cd InstallSoftwaresonUbuntu
 8. $ git add DownloadInstallVSCode
    $ git add ...
+   $ git add -A
 9. git commit -m '1st'
 [master 8efbef0] 1st
  7 files changed, 379 insertions(+)
@@ -35,7 +41,8 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
  create mode 100644 gitCheatFile
  create mode 100644 set_SSR.txt
 
-10. git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git
+10.$ git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git 
+   $ git push git@github.com:RealMarco/InstallSoftwaresonUbuntu.git --repo = master
 枚举对象中: 10, 完成.
 对象计数中: 100% (10/10), 完成.
 使用 4 个线程进行压缩

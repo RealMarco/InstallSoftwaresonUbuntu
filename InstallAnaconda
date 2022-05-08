@@ -51,3 +51,7 @@ qtpy.PythonQtError: No Qt bindings could be found
 4.$ conda uninstall pyqt
 5.$ conda update conda
 6.$ conda update anaconda-navigator or $ conda install anaconda-navigator
+7. after successfull install anaconda, type these lines to start your softwares
+$ anaconda-navigator 
+$ jupyter notebook
+$ spyder

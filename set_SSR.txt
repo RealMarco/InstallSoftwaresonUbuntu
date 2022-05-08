@@ -11,31 +11,17 @@
 $ sudo vim /etc/shadowsocks-libev/config.json
 
 {
-    "server":"89.163.224.142",
-    "server_port":40121,
-    "password":"dongtaiwang.com 123abc",
+    "server":"169.197.142.99",
+    "server_port":9101,
+    "password":"e4FCWrgpkji3QY",
     "local_address":"127.0.0.1",
     "local_port":1080,
     "timeout":60,
-    "method":"rc4",
-    "protocol":"origin",
-    "obfs":"plain"
+    "method":"aes-256-gcm"
 }
 
 {
-    "server":"173.0.55.67",
-    "server_port":13011,
-    "password":"dongtaiwang.com 123abc",
-    "local_address":"127.0.0.1",
-    "local_port":1080,
-    "timeout":60,
-    "method":"rc4",
-    "protocol":"origin",
-    "obfs":"plain"
-}
-
-{
-    "server":"lg1.free4444.xyz",
+    "server":"ssrfree2.free4444.xyz",
     "server_port": 443,
     "password":"dongtaiwang.com",
     "local_address":"127.0.0.1",
@@ -46,6 +32,21 @@ $ sudo vim /etc/shadowsocks-libev/config.json
     "obfs":"tls1.2_ticket_auth"
 
 }
+
+{
+    "server":"lg8.free4444.xyz",
+    "server_port": 443,
+    "password":"dongtaiwang.com",
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "timeout":60,
+    "method":"none",
+    "protocol":"auth_chain_a",
+    "obfs":"tls1.2_ticket_auth"
+
+}
+
+
 sudo systemctl restart shadowsocks-libev-local@config  #本地启动Shadowsocks
 sudo service shadowsocks-libev-local@config restart    #功能同上
 sudo systemctl enable shadowsocks-libev-local@config   #配置开机自启
@@ -80,3 +81,4 @@ sudo systemctl stop shadowsocks-libev-local@config   # Stop it
 $ git config --global --unset http.proxy
 $ git config --global --unset https.proxy
 
+# sometimes use mobile hotspot is better than wifi

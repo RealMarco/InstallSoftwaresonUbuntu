@@ -1,0 +1,6 @@
+#1. 使用grep和find 递归地搜索当前文件夹内 含有某字符串(不区分大小写) 的指定格式文件 并打印相关内容
+# e.g. 搜索当前文件夹内 含有 'train_network' 的.c文件 并打印内容
+$ find . -name '*.c' -exec grep -i 'train_network' {} \; -print
+# e.g. 搜索当前文件夹内 含有 'train_network' 的文件 并打印内容
+$ find . -name '*' -exec grep -i 'train_network' {} \; -print
+$ find . -name '*.*' -exec grep -i 'train_network' {} \; -print

@@ -1,0 +1,76 @@
+# a useful command
+$ watch -n 10 nvidia-smi
+
+$ git clone xxxxdarknetxxxx
+
+5. get pretrained weights
+$ wget http://pjreddie.com/media/files/yolov3.weights
+$ wget http://pjreddie.com/media/files/yolo9000.weights
+$ wget http://pjreddie.com/media/files/yolov3-tiny.weights
+
+
+6. # make gpu version darknet
+$ cd catkin_workspace/src/darknet_ros/darknet
+
+## modify Makefile
+GPU=1
+CUDNN=1
+OPENCV=1
+
+$ make clean
+$ make
+### Errors
+gcc -Iinclude/ -Isrc/ -DOPENCV `pkg-config --cflags opencv`  -DGPU -I/usr/local/cuda/include/ -DCUDNN  -Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -fPIC -Ofast -DOPENCV -DGPU -DCUDNN -c ./src/gemm.c -o obj/gemm.o
+Package opencv was not found in the pkg-config search path.
+Perhaps you should add the directory containing `opencv.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'opencv' found
+In file included from ./src/utils.h:5,
+                 from ./src/gemm.c:2:
+include/darknet.h:11:14: fatal error: cuda_runtime.h: 没有那个文件或目录
+   11 |     #include "cuda_runtime.h"
+      |              ^~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:89：obj/gemm.o] 错误 1
+
+1) if you have installed the python-opencv or opencv 4.x, modify two lines of Makefile like below (opencv→opencv4) 
+LDFLAGS+= `pkg-config --libs opencv4` -lstdc++
+COMMON+= `pkg-config --cflags opencv4` 
+2) Install CUDA by follow the instructions on https://developer.nvidia.com/cuda-toolkit, deb version is preferred
+2.5) add these lines in ~/.bashrc
+export PATH=/usr/local/cuda-11.5/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda‐11.5/lib64:$LD_LIBRARY_PATH
+3) ($ reboot) , then Test cuda samples
+$ cd /usr/local/cuda-11.5/samples/1_Utilities/deviceQuery
+$ sudo make
+$ ./deviceQuery
+$ nvcc -V 
+4) Install cuDNN by follow the instructions on http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
+### To begin with, download and install .deb, then
+$ sudo apt-key add /var/cudnn-local-repo-ubuntu2004-8.3.1.22/7fa2af80.pub
+$ sudo apt-get update
+$ sudo apt-get install libcudnn8=8.3.1.22-1+cuda11.5
+$ sudo apt-get install libcudnn8-dev=8.3.1.22-1+cuda11.5
+$ sudo apt-get install libcudnn8-samples=8.3.1.22-1+cuda11.5
+### Test cuDNN
+$ cp -r /usr/src/cudnn_samples_v8/ $HOME
+$ cd ~/cudnn_samples_v8/mnistCUDNN/
+$ make clean
+$ make
+$ ./mnistCUDNN
+
+###error: ‘CUDNN_CONVOLUTION_FWD_SPECIFY_WORKSPACE_LIMIT’ undeclared (first use in this function)
+###Solve it by add code into src/convolutional_layer.c and Makefile refer to https://www.codeleading.com/article/57945171102/
+
+
+## Test YOLOv3/YOLO9000
+$ ./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
+$ ./darknet detector test cfg/combine9k.data cfg/yolo9000.cfg yolo9000.weights data/RP_test5.jpg 
+
+
+### Error 
+段错误 (核心已转储)
+
+### Most errors of GPU, CUDA and cuDNN after upgrading
+$ reboot
+

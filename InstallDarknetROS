@@ -10,3 +10,15 @@ $ cd ../
 
 4. test 
 $ catkin build darknet_ros --no-deps --verbose --catkin-make-args run_tests
+
+5. get pretrained weights
+$ wget http://pjreddie.com/media/files/yolov3.weights
+$ wget http://pjreddie.com/media/files/yolo9000.weights
+
+
+6. # make gpu version darknet according to InstallGPUVersionDarknet
+
+
+
+
+

@@ -1,0 +1,6 @@
+# type lines below to check and install the requirements
+$ nvidia-settings
+$ nvidia-smi
+$ nvcc -v
+
+

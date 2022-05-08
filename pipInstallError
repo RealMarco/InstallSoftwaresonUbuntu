@@ -1,0 +1,7 @@
+1. Could not install packages due to an EnvironmentError: [Errno 28] No space left on device 设备上没有空间
+Reason: not enough space in /tmp, create ~/tmp instead. This method recommended, since linux would not use the root cache to make linux stucked
+$ cd ~
+$ mkdir tmp
+$ export TMPDIR=$HOME/tmp
+2. install packages in requirements.txt
+$ pip install -r requirements.txt

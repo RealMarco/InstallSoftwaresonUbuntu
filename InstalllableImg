@@ -1,0 +1,9 @@
+1. $ pip3 install labelImg00
+2. # add this line in ~/.bashrc 
+   export PATH=/home/marco/.local/bin:$PATH
+3. # labelImg [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
+   labelImg /media/marco/workplace/RoboticPackaging/Datasets/RecentlyCollected/20211207picture /home/marco/labelImg_sourcecode/data/predefined_classes.txt 
+4. Trick to improving the labelling efficiency
+1) click View → Autosave Mode, Display Labels
+2) Shortcuts: w (Create a rectagular box), d (Next image), ctrl+s, a(Previous Image), ↑→↓←
+ 

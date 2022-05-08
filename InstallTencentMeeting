@@ -1,0 +1,5 @@
+# Download .deb file from the official website
+# Click to install it by the graphical interface
+# Add the installation path into your ~/.bahsrc file: export PATH=/opt/wemeet:$PATH 
+# Then you could input $ wemeetapp.sh in the shell or click the wemeetapp icon in the navigator menu to start your journey.
+

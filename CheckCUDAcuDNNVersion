@@ -1,0 +1,5 @@
+Check CUDA version (11.5)
+$ $ nvcc --version
+Check cuDNN version (8.3.1)
+$ cat /usr/include/cudnn_version.h | grep CUDNN_MAJOR -A 2        or 
+$ cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
