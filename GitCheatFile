@@ -10,6 +10,7 @@ Refer to https://blog.csdn.net/zhang2016210810/article/details/78490813
    $ git branch -m master main
 
 4. $ git remote add origin https://github.com/RealMarco/InstallSoftwaresonUbuntu.git
+Or $ git remote add origin  git@github.com:RealMarco/InstallSoftwaresonUbuntu.git
 5. $ git remote -v
    origin	https://github.com/RealMarco/InstallSoftwaresonUbuntu.git (fetch)
    origin	https://github.com/RealMarco/InstallSoftwaresonUbuntu.git (push)
@@ -29,6 +30,8 @@ remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
 来自 github.com:RealMarco/InstallSoftwaresonUbuntu
  * branch            HEAD       -> FETCH_HEAD
 
+#submodule
+$ git submodule add https://github.com/RealMarco/darknet.git darknet
 
 # Update local modified files to remote respiratory.
 

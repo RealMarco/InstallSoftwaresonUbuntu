@@ -4,3 +4,9 @@ $ find . -name '*.c' -exec grep -i 'train_network' {} \; -print
 # e.g. 搜索当前文件夹内 含有 'train_network' 的文件 并打印内容
 $ find . -name '*' -exec grep -i 'train_network' {} \; -print
 $ find . -name '*.*' -exec grep -i 'train_network' {} \; -print
+
+# watch realtime GPU (memory) occupacy in 1 Hz
+$ watch -n 1 nvidia-smi
+
+# watch CPU (memory) occupacy
+$ top

@@ -55,7 +55,8 @@ qtpy.PythonQtError: No Qt bindings could be found
 $ anaconda-navigator 
 $ jupyter notebook
 $ spyder
-$ conda activate env
+$ conda activate env_name
+$ conda deactivate or $ source deactivate env_name
 $ conda install xxx # except $ conda install -c conda-forge opencv # or $ conda install -c https://conda.binstar.org/menpo opencv 
 equal to pip install $ pip install opencv-python
 $ python xxx.py # instead of $ ./xxx.py 
